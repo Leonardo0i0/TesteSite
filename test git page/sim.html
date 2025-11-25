@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulação VPython</title>
+</head>
+
+<body style="margin:0">
+
+<div id="glow" style="width:100%; height:100vh;"></div>
+
+<script type="module">
+    import * as vpython from "https://www.glowscript.org/latest/GlowScript.min.js";
+
+    // Carrega o arquivo Python externo (teste.py)
+    fetch("teste.py")
+        .then(res => res.text())
+        .then(code => {
+            vpython.glowscript.run({
+                container: document.getElementById("glow"),
+                code: code
+            });
+        })
+        .catch(err => {
+            console.error("Erro ao carregar o arquivo teste.py:", err);
+        });
+</script>
+
+</body>
+</html>
